@@ -11,7 +11,7 @@
     ...or hosted services like Google Fonts 
     @import url(//fonts.googleapis.com/css?family=Font+Name);
   */
-  
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
   /* @import 'node_modules/modern-normalize/modern-normalize.css'; */
         /* npm install modern-normalize
           Resets elements for browser consistency.  
@@ -24,22 +24,35 @@
 
 /*   ----- Variables  -----  */
 :root {
-  --custom-color-name:;
+  --primary: ForestGreen;
   --custom-embellishment-name:;
 }
 
 /*  ----- Viewport ----- elements inherited by all remaining elements ----- */
 body {       /* Can alternatively define in html {} or :root {} */
-  background-color:;
+  background-color: #f1f1f1;
   background-image:;
   color:;
-  font-family:; /* Define with at least one font name and its related generic family name.*/
-  margin:;
+  font-family:"Poppins"; /* Define with at least one font name and its related generic family name.*/
+  margin:0;
   padding:;
 }
 
 /*  ----- Page layout blocks -----  */
-header {}
+header {
+  background: #ffff;
+}
+header a{
+  color: #333;
+}
+header .container {
+  max-width: auto;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 main {}
 section {}
   article {}
@@ -92,6 +105,14 @@ strong {}
 sub {}
 sup {}
 time {}
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
 
 /*  ----- Coding or instructional typography ----- */
 pre {}
@@ -123,8 +144,28 @@ form {}
 fieldset {}
   legend {}
 label {}
-  button {}
-  input {}
+  button {
+    background: var(--primary);
+    border: 0;
+    color: #fff;
+    margin-top: 50px;
+    padding: 10px;
+    font-family: "Poppins";
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  input {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  input.error {
+    border: 1px solid var(--error);
+  }
   output {}
   meter {}
   progress {}
@@ -146,8 +187,55 @@ audio {}
 embed {}
 object {}
 
+Nav{
+  font-size: 1.4em;
+}
+
+
 /*  ----- Classes for alignment, positioning, widths, grids, embellishments, and animation -----  */
 .gallery {}
+
+.pages{
+  max-width: 2000px;
+  min-width: auto;
+  padding: 3%;
+  margin: 5px auto;
+}
+
+/* homepage */
+.home {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 100px;
+}
+.movement-details {
+  background: lightgray;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+.movement-details h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  color: var(--primary);
+}
+.movement-details p {
+  margin: 0;
+  font-size: 1.1em;
+  color: rgba(0, 0, 0, 0.721);
+}
+.movement-details span {
+  position:;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
 
 .floatright {}
 .floatleft {}
@@ -179,3 +267,22 @@ object {}
 
 /*   ===== PRINT  media query overrides previous styles =====  */
 @media print {}
+
+
+
+@import url("https://code.highcharts.com/css/highcharts.css");
+
+
+/* Gant Chart */
+.Gantt {
+    max-width: auto;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 25px;
+    background-color: #333;
+}
+
+.highcharts-treegrid-node-level-1 {
+    font-size: 13px;
+    font-weight: bold;
+}

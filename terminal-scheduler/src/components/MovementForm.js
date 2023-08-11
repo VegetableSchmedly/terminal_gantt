@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { useMovementsContext } from '../hooks/useMovementsContext';
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import { Button, Form } from 'react-bootstrap'
+
 const MovementForm = () => {
     const { dispatch } = useMovementsContext()
 
@@ -48,43 +52,48 @@ const MovementForm = () => {
     }
 
     return (
-        <form id ="create" className="create" onSubmit={handleSubmit}>
+        <Form id ="create" className="create" onSubmit={handleSubmit}>
             <h3>Add a New Movement</h3>
-
-            <label>Sending Vessel:</label>
-            <input
+            <Form.Group>
+            <Form.Label>Sending Vessel:</Form.Label>
+            <Form.Control
+                size='lg'
+                placeholder='Tank, Ship, Barge, etc.'
                 type="string"
                 onChange={(e) => setSendingVessel(e.target.value)}
                 value={ sendingVessel }
                 className={emptyFields.includes('sendingVessel') ? 'error' : '' }
             />
 
-            <label>Receiving Vessel:</label>
-            <input
+            <Form.Label>Receiving Vessel:</Form.Label>
+            <Form.Control
+                size='lg'
+                placeholder='Tank, Ship, Barge, etc.'
                 type="string"
                 onChange={(e) => setReceivingVessel(e.target.value)}
                 value={ receivingVessel }
                 className={emptyFields.includes('receivingVessel') ? 'error' : '' }
             />
 
-            <label>Start Time:</label>
-            <input
+            <Form.Label>Start Time:</Form.Label>
+            <Form.Control
+                size='lg'
                 type="datetime-local"
                 onChange={(e) => setStartTime(e.target.value)}
                 value={ startTime }
                 className={emptyFields.includes('startTime') ? 'error' : '' }
             />
 
-            <label>End Time:</label>
-            <input
+            <Form.Label>End Time:</Form.Label>
+            <Form.Control
+                size='lg'
                 type="datetime-local"
                 onChange={(e) => setEndTime(e.target.value)}
                 value={ endTime }
                 className={emptyFields.includes('endTime') ? 'error' : '' }
             />
-
-            <label>Movement Type:</label>
-            <select
+            <Form.Label >Movement Type</Form.Label>
+            <Form.Select size='lg'
                 name="category"
                 id="category"
                 onChange={(e) => setCategory(e.target.value)}
@@ -96,11 +105,12 @@ const MovementForm = () => {
                     <option value='Railcar'>Railcar</option>
                     <option value='Internal'>Internal</option>
                     <option value='Pipeline'>Pipeline</option>
-            </select>
+            </Form.Select>
+            </Form.Group>
 
-            <button>Add Movement</button>
+            <Button size='lg' variant='primary' type='submit'>Add Movement</Button>
             {error && <div className="error">{error}</div>}
-        </form>
+        </Form>
 
     )
 }

@@ -1,4 +1,15 @@
+var today = new Date(),
+    day = 1000 * 60 * 60 * 24;
+
+// Set to 00:00:00:000 today
+today.setUTCHours(0);
+today.setUTCMinutes(0);
+today.setUTCSeconds(0);
+today.setUTCMilliseconds(0);
+
+
 export const Options = (movements) => {
+
     // Create data structure for Highcharts Gantt chart
     const categories = ['Internal', 'Pipeline', 'Vessel', 'Railcar'];
     const series = categories.map(category => ({ name: category, data: [{ name: category, id: category, pointWidth: 3 }] }));
@@ -24,16 +35,21 @@ export const Options = (movements) => {
         }
     }
     return {
+        chart:{
+            styledMode: true
+        },
         title: {
             text: 'Current Movements'
         },
         series,
-        // yAxis: {
-        //     type: 'category',
-        //     categories
-        // },
-        xAxis: {
-            currentDateIndicator: true
-        },
+        xAxis: {},
+        yAxis: {},
+        // accessibility: {
+        //     keyboardNavigation: {
+        //         seriesNavigation: {
+        //             mode: 'serialize'
+        //         }
+        //     }
+        // }
     };
 }

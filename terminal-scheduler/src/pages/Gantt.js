@@ -18,7 +18,7 @@ const Gantt = () => {
     }, []);
 
     return (
-        <div>
+        <div class="Gantt">
             <MyGantt movements={movements} />
         </div>
     );

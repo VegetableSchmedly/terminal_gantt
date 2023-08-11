@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useMovementsContext } from '../hooks/useMovementsContext';
 
+
 //components
 import MovementDetails from "../components/MovementDetails"
 import MovementForm from "../components/MovementForm";
