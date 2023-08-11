@@ -5,12 +5,17 @@ import { Options } from '../data/GanttData'
 import Highcharts from "highcharts/highcharts-gantt";
 import HighchartsReact from "highcharts-react-official";
 
-const MyGantt = ({ movements }) => (
-    <HighchartsReact
-        highcharts={Highcharts}
-        constructorType={"ganttChart"}
-        options={Options(movements)}
-    />
-);
+const MyGantt = ({ movements }) => {
+    console.log(Options(movements)); // log the data to the console
+    return (
+        <div>
+            <HighchartsReact
+                highcharts={Highcharts}
+                constructorType={"ganttChart"}
+                options={Options(movements)}
+            />
+        </div>
+    );
+};
 
 export default MyGantt;

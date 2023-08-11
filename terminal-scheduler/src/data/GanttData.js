@@ -1,7 +1,7 @@
 export const Options = (movements) => {
     // Create data structure for Highcharts Gantt chart
     const categories = ['Internal', 'Pipeline', 'Vessel', 'Railcar'];
-    const series = categories.map(category => ({ name: category, data: [{ name: category, id: category }] }));
+    const series = categories.map(category => ({ name: category, data: [{ name: category, id: category, pointWidth: 3 }] }));
 
     if (movements) {
         for (let i = 0; i < movements.length; i++) {
@@ -17,12 +17,12 @@ export const Options = (movements) => {
                         end: endTime.getTime(),
                         actualStart: movements[i].startTime,
                         actualEnd: movements[i].endTime,
+                        id: movements[i]._id
                     });
                 }
             }
         }
     }
-console.log(series)
     return {
         title: {
             text: 'Current Movements'
