@@ -19,12 +19,13 @@ const MovementDetails = ({ movement }) => {
 
     return (
         <div className="movement-details">
-            <h4>Sending Vessel: {movement.sendingVessel}</h4>
+            <h4>Movement Type: {movement.category}</h4>
+            <p><strong>Sending Vessel: {movement.sendingVessel}</strong></p>
             <p><strong>Receiving Vessel: {movement.receivingVessel}</strong></p>
             <p><strong>Start Time: { (new Date(movement.startTime).toLocaleString()) }</strong></p>
             <p><strong>End Time: { (new Date(movement.endTime).toLocaleString()) }</strong></p>
             <p>Movement entered {formatDistanceToNow(new Date(movement.createdAt), { addSufix: true})}</p>
-            <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+            <span className="material-symbols-outlined" onClick={handleClick}>delete </span>
         </div>
     )
 

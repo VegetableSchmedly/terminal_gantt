@@ -29,7 +29,7 @@ const getMovement = async (req, res) => {
 
 // create a new movement
 const createMovement = async (req, res) => {
-    const {sendingVessel, receivingVessel, startTime, endTime} = req.body
+    const {sendingVessel, receivingVessel, startTime, endTime, category} = req.body
 
     let emptyFields = []
     // let timeError = false
@@ -50,6 +50,10 @@ const createMovement = async (req, res) => {
         emptyFields.push('endTime')
     }
 
+    if (!category) {
+        emptyFields.push('category')
+    }
+
     // if (startTime > endTime) {
     //     timeError = true
     // }
@@ -66,12 +70,13 @@ const createMovement = async (req, res) => {
 
     // add doc to db
     try { 
-        const movement = await Movement.create({sendingVessel, receivingVessel, startTime, endTime})
+        const movement = await Movement.create({sendingVessel, receivingVessel, startTime, endTime, category})
         res.status(200).json(movement)
 
     } catch (error) {
-        res.status(400).json({error: error.message})
+        res.status(400).json({error: error.message, emptyFields: []})
     }
+    console.log(req.body)
 };
 
 

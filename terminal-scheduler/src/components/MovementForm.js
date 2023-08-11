@@ -8,6 +8,7 @@ const MovementForm = () => {
     const [receivingVessel, setReceivingVessel] = useState('')
     const [startTime, setStartTime] = useState('')
     const [endTime, setEndTime] = useState('')
+    const [category, setCategory] = useState('')
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
     // const [timeError, setTimeError] = useState(null)
@@ -16,7 +17,7 @@ const MovementForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const movement = {sendingVessel, receivingVessel, startTime, endTime}
+        const movement = {sendingVessel, receivingVessel, startTime, endTime, category}
 
         const response = await fetch('/api/movements', {
             method: 'POST',
@@ -37,6 +38,7 @@ const MovementForm = () => {
             setReceivingVessel('')
             setStartTime('')
             setEndTime('')
+            setCategory('')
             setError(null)
             setEmptyFields([])
             // setTimeError(false)
@@ -46,12 +48,12 @@ const MovementForm = () => {
     }
 
     return (
-        <form className="create" onSubmit={handleSubmit}>
+        <form id ="create" className="create" onSubmit={handleSubmit}>
             <h3>Add a New Movement</h3>
 
             <label>Sending Vessel:</label>
             <input
-                type="text"
+                type="string"
                 onChange={(e) => setSendingVessel(e.target.value)}
                 value={ sendingVessel }
                 className={emptyFields.includes('sendingVessel') ? 'error' : '' }
@@ -59,7 +61,7 @@ const MovementForm = () => {
 
             <label>Receiving Vessel:</label>
             <input
-                type="text"
+                type="string"
                 onChange={(e) => setReceivingVessel(e.target.value)}
                 value={ receivingVessel }
                 className={emptyFields.includes('receivingVessel') ? 'error' : '' }
@@ -79,7 +81,22 @@ const MovementForm = () => {
                 onChange={(e) => setEndTime(e.target.value)}
                 value={ endTime }
                 className={emptyFields.includes('endTime') ? 'error' : '' }
-            />  
+            />
+
+            <label>Movement Type:</label>
+            <select
+                name="category"
+                id="category"
+                onChange={(e) => setCategory(e.target.value)}
+                value={ category }
+                className={emptyFields.includes('category') ? 'error' : '' }
+                form='create'>
+                    <option value=''>Select Type</option>
+                    <option value='Vessel'>Vessel</option>
+                    <option value='Railcar'>Railcar</option>
+                    <option value='Internal'>Internal</option>
+                    <option value='Pipeline'>Pipeline</option>
+            </select>
 
             <button>Add Movement</button>
             {error && <div className="error">{error}</div>}

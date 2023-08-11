@@ -4,11 +4,11 @@ const Schema = mongoose.Schema
 
 const movementSchema = new Schema({
     sendingVessel: {
-        type: Number,
+        type: String,
         required: true
     },
     receivingVessel: {
-        type: Number,
+        type: String,
         required: true
     },
     startTime: {
@@ -19,6 +19,12 @@ const movementSchema = new Schema({
         type: Date,
         required: true
     },
+    category: {
+        type: String,
+        enum: ['Internal', 'Vessel', 'Pipeline', 'Railcar'],
+        default: 'Internal',
+        required: true
+    }
 }, {timestamps: true}
 
 );
