@@ -237,6 +237,21 @@ Nav{
   color: #333;
 }
 
+/* Gant Chart */
+.Gantt {
+  max-width: auto;
+  margin: 1em auto;
+  padding: 1em;
+  border-radius: 25px;
+  background-color: #333;
+}
+
+.highcharts-treegrid-node-level-1 {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+
 .floatright {}
 .floatleft {}
 .center-middle {}
@@ -273,16 +288,4 @@ Nav{
 @import url("https://code.highcharts.com/css/highcharts.css");
 
 
-/* Gant Chart */
-.Gantt {
-    max-width: auto;
-    margin: 1em auto;
-    padding: 1em;
-    border-radius: 25px;
-    background-color: #333;
-}
 
-.highcharts-treegrid-node-level-1 {
-    font-size: 13px;
-    font-weight: bold;
-}
